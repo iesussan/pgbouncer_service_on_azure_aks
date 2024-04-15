@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: pgbouncer-svc
+  namespace: pgbouncer
+  annotations:
+    service.beta.kubernetes.io/azure-load-balancer-internal: "true"
+    external-dns.alpha.kubernetes.io/hostname: "pgbouncer.senaprivatecloud.int"
+spec:
+  type: LoadBalancer
+  sessionAffinity: ClientIP
+  selector:
+    name: pgbouncer
+  ports:
+    - name: pgbouncer-port
+      protocol: TCP
+      port: 5432
+      targetPort: 5432
