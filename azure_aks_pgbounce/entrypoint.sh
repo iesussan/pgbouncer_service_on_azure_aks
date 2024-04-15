@@ -9,11 +9,6 @@ set -x
 # https://pgbouncer.github.io/config.html
 
 PG_CONFIG_DIR=/etc/pgbouncer
-echo "$DB_USER"
-echo "$DB_PASSWORD"
-echo "$DB_HOST"
-echo "$DB_PORT"
-echo "$DB_NAME"
 
 # Write the password with MD5 encryption, to avoid printing it during startup.
 # Notice that `docker inspect` will show unencrypted env variables.
