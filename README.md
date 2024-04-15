@@ -1,4 +1,4 @@
-# Documentación de Implementación de Azure Kubernetes Service y PgBouncer
+# Implementación de pgbouncer sobre Azure Kubernetes Service
 
 Este documento proporciona una guía paso a paso para desplegar un clúster de Kubernetes en Azure utilizando un Makefile, con la implementación de un servicio de PgBouncer para optimizar conexiones de bases de datos PostgreSQL. El enfoque detalla cómo utilizar diferentes recursos de Azure como AKS, VNETs, y servicios relacionados.
 
