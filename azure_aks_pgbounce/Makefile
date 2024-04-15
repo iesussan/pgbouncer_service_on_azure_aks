@@ -420,14 +420,6 @@ build_docker_image_for_pgbouncer:
 	docker build -t $(AZURE_CONTAINER_REGISTRY_NAME).azurecr.io/$(PGBOUNCER_IMAGE) --platform linux/amd64 .
 
 push_docker_image_to_azure_container_registry:
-	# az acr update --name $(AZURE_CONTAINER_REGISTRY_NAME) --admin-enabled true
-	
-	# $(eval ACR_USERNAME=$(shell az acr credential show --name $(AZURE_CONTAINER_REGISTRY_NAME) --query username -o tsv))
-	# $(eval ACR_PASSWORD=$(shell az acr credential show --name $(AZURE_CONTAINER_REGISTRY_NAME) --query passwords[0].value -o tsv))
-	
-	# @echo "ACR Username: $(ACR_USERNAME)"
-	# @echo "ACR Password: $(ACR_PASSWORD)"
-	
 	az acr login --name $(AZURE_CONTAINER_REGISTRY_NAME)
 	docker push $(AZURE_CONTAINER_REGISTRY_NAME).azurecr.io/$(PGBOUNCER_IMAGE)
 
@@ -454,11 +446,11 @@ create_pgbouncer_secret_for_configuration:
 
 create_pgbouncer_deployment:
 	@echo "Creando el deployment de PgBouncer..."
-	kubectl apply -f pgbouncer/pgbouncer-deployment.yaml
+	kubectl apply -f ../pgbouncer/pgbouncer-deployment.yaml
 
 create_pgbouncer_service:
 	@echo "Creando el servicio de PgBouncer..."
-	kubectl apply -f pgbouncer/pgbouncer-service.yaml
+	kubectl apply -f ../pgbouncer/pgbouncer-service.yaml
 
 
 
